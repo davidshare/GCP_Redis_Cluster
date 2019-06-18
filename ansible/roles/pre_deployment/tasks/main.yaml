@@ -1,0 +1,25 @@
+- name: GCLOUD authentication using service account
+  shell: |
+    gcloud auth activate-service-account --key-file {{ SERVICE_ACCOUNT_PATH }}
+    gcloud container clusters get-credentials {{ CLUSTER_NAME }} --zone {{ GCP_ZONE }} --project {{ GCP_PROJECT }}
+    kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user {{ SERVICE_ACCOUNT_USER }} || echo "resource created"
+- name: Set cluster context
+  script: select_cluster.sh
+
+# - name: Create cluster role binding
+#   k8s:
+#     state: present
+#     definition: "{{ lookup('template', 'templates/role_binding.yml') }}"
+#     # service_account_email: "{{ SERVICE_ACCOUNT_EMAIL }}"
+#     key_file: "{{ SERVICE_ACCOUNT_PATH }}"
+#     # project_id: "{{ GCP_PROJECT }}"
+
+- name: Create namespace
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'templates/namespace.yml') }}"
+
+# - name: Create secrets
+#   k8s:
+#     state: present
+#     definition: "{{ lookup('template', 'templates/secrets.yml') }}"

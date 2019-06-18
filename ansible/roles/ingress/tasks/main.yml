@@ -1,0 +1,12 @@
+- name: Create ingress
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'templates/ingress.yml') }}"
+
+- name: Create nginx-service
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'templates/nginx-service.yml') }}"
+
+- name: Create nginx-ingress-controller
+  command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml

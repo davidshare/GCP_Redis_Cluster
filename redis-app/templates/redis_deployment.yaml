@@ -1,0 +1,24 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "redis-app.fullname" . }}
+  namespace: {{ .Values.REDIS_NAMESPACE }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "redis-app.fullname" . }}
+  serviceName: {{ .Values.SERVICE_NAME }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "redis-app.fullname" . }}
+    spec:
+      containers:
+        - name: {{ .Values.DEPLOYMENT_CONTAINER_NAME }}
+          image: {{ .Values.DEPLOYMENT_CONTAINER_IMAGE }}
+          imagePullPolicy: Always
+          args: ["--requirepass", "{{ .Values.REDIS_PASSWORD }}"]
+          ports:
+            - containerPort: {{ .Values.SERVICE_PORT }}
+              name: {{ template "redis-app.fullname" . }}

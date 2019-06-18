@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ingress-nginx
+  namespace: {{ .Values.INGRESS_NAMESPACE }}
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+spec:
+  externalTrafficPolicy: Local
+  type: LoadBalancer
+  loadBalancerIP: {{ .Values.REDIS_IP_ADDRESS }}
+  selector:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+  ports:
+    - name: {{ .Values.PORT_NAME }}
+      port: {{ .Values.DEFAULT_PORT }}
+      targetPort: {{ .Values.SERVICE_PORT }}

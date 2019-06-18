@@ -1,41 +1,41 @@
 variable "project" {
 	description = "The project to host the cluster"
-	default = "andela-learning"
+	default = ""
 }
 
 variable "region" {
 	description = "the region to create the project in"
-	default = "europe-west1"
+	default = ""
 }
 
 variable "zone" {
 	description = "the zone to create the project in"
-	default = "europe-west1-b"
+	default = ""
 }
 
 variable "cluster_name" {
   description = "The name of the cluster"
-	default = "apprenticeship-redis"
+	default = ""
 }
 
 variable "cluster_location" {
 	description = "The zone to deploy the cluster to"
-	default = "europe-west1-b"
+	default = ""
 }
 
 variable "owner" {
   description = "The owner of the cluster"
-	default = "andela-apprenticeship-devops"
+	default = ""
 }
 
 variable "maintainers" {
   description = "The maintainers of the project"
-	default = "david-essien"
+	default = ""
 }
 
 variable "node_pool_name" {
 	description = "The name of the node pool to use for the created cluster"
-	default = "redis-cluster-node-pool"
+	default = ""
 }
 
 variable "auto_scale_min_nodes" {
@@ -50,13 +50,9 @@ variable "auto_scale_max_nodes" {
 
 variable "pool_machine_type" {
 	description = "The type of machine to use for the cluster nodes"
-  default     = "n1-standard-1"
+  default     = ""
 }
 
-variable "pool_disk_size_gb" {
-	description = "The type of machine to use for the cluster nodes"
-  default     = "n1-standard-1"
-}
 
 
 

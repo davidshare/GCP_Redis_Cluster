@@ -1,0 +1,23 @@
+- name: Create terraform plan
+  terraform:
+    project_path: "{{ PROJECT_PATH }}"
+    plan_file: "{{ PROJECT_PATH }}/tfplan"
+    lock: true
+    state: "{{ PLANNED_STATE }}"
+    force_init: true
+    backend_config:
+      region: "{{ REGION }}"
+      bucket: "{{ BUCKET_NAME }}"
+      key: "{{ STATE_FILE }}.tfstate" 
+
+- name: Apply the terraform plan
+  terraform:
+    project_path: "{{ PROJECT_PATH }}"
+    lock: true
+    state: "{{ PRESENT_STATE }}"
+
+# - name: Destroy the infrastructure
+#   terraform:
+#     project_path: "{{ PROJECT_PATH }}"
+#     lock: true
+#     state: "{{ ABSENT_STATE }}"

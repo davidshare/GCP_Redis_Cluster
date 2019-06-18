@@ -1,0 +1,8 @@
+REGION: "region"
+BUCKET_NAME: "bucket name"
+STATE_FILE: "name of state file"
+PROJECT_PATH: "root directory of the terraform scripts"
+PRESET_STATE: "present"
+PLANNED_STATE: "planned"
+ABSENT_STATE: "absent"
+NAMESPACE: "your namespace"

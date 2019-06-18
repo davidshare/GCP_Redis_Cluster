@@ -2,3 +2,10 @@
 terraform.tfvars
 credentials
 .terraform
+*.retry
+ansible/variables.yml
+terraform/variables.tf
+tfplan
+*.tfstate
+*.backup
+.DS_STORE

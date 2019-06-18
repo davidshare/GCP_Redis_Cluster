@@ -1,0 +1,17 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: {{ .Values.SERVICE_NAME }}-ingress-nginx
+  namespace: {{ .Values.REDIS_NAMESPACE }}
+  annotations:
+    kubernetes.io/ingress.class: 'nginx'
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'false'
+spec:
+  rules:
+    - host: {{ .Values.REDIS_HOST }}
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: {{ .Values.SERVICE_NAME }}
+              servicePort: {{ .Values.DEFAULT_PORT }}

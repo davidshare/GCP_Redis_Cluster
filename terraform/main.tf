@@ -5,10 +5,10 @@ provider "google" {
   zone    		= "${var.zone}"
 }
 
-terraform {
-  backend "gcs" {
-		bucket 				= "redis_cluster"
-		prefix 				= "redis_"
-		credentials = "./credentials/serviceaccount.json"
-	}
-}
+# terraform {
+#   backend "gcs" {
+# 		bucket 				= "redis_cluster"
+# 		prefix 				= "redis_"
+# 		credentials = "./credentials/serviceaccount.json"
+# 	}
+# }

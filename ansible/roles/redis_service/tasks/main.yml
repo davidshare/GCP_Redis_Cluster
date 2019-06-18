@@ -1,0 +1,4 @@
+- name: Create redis service
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'templates/redis_service.yml') }}"

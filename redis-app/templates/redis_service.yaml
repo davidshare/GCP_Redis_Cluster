@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.SERVICE_NAME }}
+  namespace: {{ .Values.REDIS_NAMESPACE }}
+  labels:
+    app: {{ template "redis-app.fullname" . }}
+spec:
+  type: NodePort
+  ports:
+    - port: {{ .Values.DEFAULT_PORT }}
+      name: {{ .Values.PORT_NAME }}
+      protocol: TCP
+      targetPort: {{ .Values.SERVICE_PORT }}
+  selector:
+    app: {{ template "redis-app.fullname" . }}

@@ -1,0 +1,14 @@
+- hosts: localhost
+  # vars:
+  #   service_account_file: "{{ SERVICE_ACCOUNT_PATH }}"
+  #   project: "{{ GCP_PROJECT }}"
+  #   auth_kind: "{{ AUTH_KIND }}"
+  roles:
+    - gke_cluster
+    - pre_deployment
+    - redis_deployment
+    - redis_service
+    - ingress
+  # environment:
+  #   K8S_AUTH_KEY_FILE: "{{ SERVICE_ACCOUNT_PATH }}"
+  #   GOOGLE_APPLICATION_CREDENTIALS : "{{ SERVICE_ACCOUNT_PATH }}"

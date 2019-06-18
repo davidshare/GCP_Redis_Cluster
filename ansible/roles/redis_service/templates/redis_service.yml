@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ SERVICE_NAME }}
+  namespace: "{{ REDIS_NAMESPACE }}"
+spec:
+  ports:
+    - port: {{ DEFAULT_PORT }}
+      name: "{{ PORT_NAME }}"
+      protocol: TCP
+      targetPort: {{ SERVICE_PORT }}
+  selector:
+    app: "{{ APP_NAME }}"
