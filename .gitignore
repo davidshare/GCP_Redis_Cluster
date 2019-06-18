@@ -1,1 +1,4 @@
 .vscode
+terraform.tfvars
+credentials
+.terraform
